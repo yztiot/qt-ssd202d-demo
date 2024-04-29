@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 2.12
 
 Rectangle{
     id: functionPageRoot
@@ -193,7 +193,7 @@ Rectangle{
             onReleased: {
                 btSetting.border.color = "transparent"
                 var createSettingPage = Qt.createComponent("SettingPage.qml").createObject(functionPageRoot);
-                createSettingPage.destroySig.connect(onDestroySig);
+              //  createSettingPage.destroySig.connect(onDestroySig);
             }
         }
     }

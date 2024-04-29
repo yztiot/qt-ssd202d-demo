@@ -1,7 +1,7 @@
 QT += quick network core serialport widgets concurrent serialbus gui virtualkeyboard quickwidgets multimedia
-
-#CONFIG += C++11
+CONFIG += C++11
 CONFIG += link_pkgconfig
+#CONFIG += lang-zh_CN
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -44,6 +44,7 @@ static {
 
 
 HEADERS += \
+    HeadDefine.h \
     bluetooth.h \
     folder.h \
     gpio.h \
@@ -60,27 +61,27 @@ HEADERS += \
     wifi.h \
     wifithread.h
 
-unix:!macx: LIBS += -L$$PWD/lib/ -lwifi
+#unix:!macx: LIBS += -L$$PWD/lib/ -lwifi
 
-INCLUDEPATH += $$PWD/include
-DEPENDPATH += $$PWD/include
+#INCLUDEPATH += $$PWD/include
+#DEPENDPATH += $$PWD/include
 
-unix:!macx: PRE_TARGETDEPS += $$PWD/lib/libwifi.a
+#unix:!macx: PRE_TARGETDEPS += $$PWD/lib/libwifi.a
 
 
-unix:!macx: LIBS += -L$$PWD/lib/ -lcjson
+#unix:!macx: LIBS += -L$$PWD/lib/ -lcjson
 
-INCLUDEPATH += $$PWD/include
-DEPENDPATH += $$PWD/include
+#INCLUDEPATH += $$PWD/include
+#DEPENDPATH += $$PWD/include
 
-unix:!macx: LIBS += -L$$PWD/lib/ -lmi_wlan
+#unix:!macx: LIBS += -L$$PWD/lib/ -lmi_wlan
 
-INCLUDEPATH += $$PWD/include
-DEPENDPATH += $$PWD/include
+#INCLUDEPATH += $$PWD/include
+#DEPENDPATH += $$PWD/include
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/release/ -laudio -lmi_sys -lmi_ao -lmad -lmi_common
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/debug/ -laudio -lmi_sys -lmi_ao -lmad -lmi_common
-else:unix: LIBS += -L$$PWD/lib/ -laudio -lmi_sys -lmi_ao -lmad -lmi_common
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/release/ -laudio -lmi_sys -lmi_ao -lmad -lmi_common
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/debug/ -laudio -lmi_sys -lmi_ao -lmad -lmi_common
+#else:unix: LIBS += -L$$PWD/lib/ -laudio -lmi_sys -lmi_ao -lmad -lmi_common
 
-INCLUDEPATH += $$PWD/include
-DEPENDPATH += $$PWD/include
+#INCLUDEPATH += $$PWD/include
+#DEPENDPATH += $$PWD/include

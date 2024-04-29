@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtMultimedia 5.14
+import QtQuick 2.12
+import QtMultimedia 5.12
 
 GeneralBgPage{
     id: settingRoot

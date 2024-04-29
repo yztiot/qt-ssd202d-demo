@@ -1,4 +1,5 @@
 #include "wifithread.h"
+#include "HeadDefine.h"
 const QString wifiStrList = QString("./grepTemp");
 WifiInfo wifi_results[MAX_SCAN_RESULTS]; // 保存wifi扫描结果的数组
 //WLAN_HANDLE g_wlanHd = -1;
@@ -18,7 +19,7 @@ WiFiThread::~WiFiThread(){
 
 /*搜索wifi，打开wifi进行初始化*/
 void WiFiThread::createWifiFile(){
-
+#if QtForArm
     system("ifconfig wlan0 up");
     init_wifi();
 
@@ -37,13 +38,16 @@ void WiFiThread::createWifiFile(){
     }
 
     emit wifiNameSig(wifiNameList);
-
+}
+#else
+#endif
 
 }
 
 
 
 void WiFiThread::onConnectWiFiSig(QString wifiName, QString passWord){
+#if QtForArm
     m_wifiName = wifiName;
     MI_WLAN_Close(&g_stOpenParam);
     MI_WLAN_Open(&g_stOpenParam);
@@ -51,30 +55,35 @@ void WiFiThread::onConnectWiFiSig(QString wifiName, QString passWord){
     connect_wifi(wifiName.toLatin1().data(), passWord.toLatin1().data(), &status);
 
    wifiStatus();
-
+#else
+#endif
 }
 
 
 /*断开当前连接的wifi*/
 void WiFiThread::onDisConnectWiFiSig(){
+    #if QtForArm
     qDebug()<<"disconnect ::";
     MI_WLAN_Disconnect(g_wlanHdl);
     MI_WLAN_Close(&g_stOpenParam);
     wifiStatus();
-
+    }
+#else
+#endif
 }
 
 void WiFiThread::onCloseWifiSig(){
-
+#if QtForArm
     disconnect_wifi();
   //  deinit_wifi();
     emit closeWiFiThreadSig();
-
+#else
+#endif
 }
 
 /*检测当前wifi连接的状态*/
 void WiFiThread::wifiStatus(){
-
+#if QtForArm
     int retry_count = 30;
     bool connected = false;
     QString name = "";
@@ -148,5 +157,6 @@ void WiFiThread::wifiStatus(){
     {
         emit disConnectCurrentWiFiSig();
     }
-
+#else
+#endif
 }

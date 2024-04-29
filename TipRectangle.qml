@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.VirtualKeyboard 2.1
 import QtQuick.VirtualKeyboard.Settings 2.1
 
@@ -79,8 +79,10 @@ Rectangle {
                 anchors.left: parent.left
                 font.pixelSize: 20
                 verticalAlignment: Text.AlignVCenter
+
                 onPressed:{
                     inputX = x
+                   // inputPanel.acceptedLocales = ["en_US", "zh_CN", "ja_JP"];
                   //  inputY = 500//y //+ inputTxt.height
                     inputPanel.visible = true
                 }
@@ -221,9 +223,11 @@ Rectangle {
         externalLanguageSwitchEnabled: false
         visible: false
 
+       // InputPanel.acceptedLocales: ["zh_CN", "en_US"]
+
         states: State {
             name: "visible"
-            when: inputPanel.active
+            when: inputPanel.active //&amp;&amp; InputPanel.locale === "zh_cn";
 //                PropertyChanges {
 //                    target: inputPanel
 //                    // 将键盘顶部放在屏幕底部会使其隐藏起来

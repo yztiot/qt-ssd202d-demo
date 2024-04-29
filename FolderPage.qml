@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 2.12
 import QtQuick.VirtualKeyboard 2.1
 
 GeneralBgPage{

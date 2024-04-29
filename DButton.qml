@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 2.12
 
 //自定义主页按钮
 Rectangle {

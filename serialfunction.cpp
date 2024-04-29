@@ -17,6 +17,7 @@ void SerialFunction::checkSerialPort(){
     QList<QSerialPortInfo> list  = QSerialPortInfo::availablePorts();
     for(int i = 0 ; i < list.length(); i++){
         qDebug()<<"useful port is::"<<list.at(i).portName();
+//虚拟机端
 //        if("ttyUSB0" == list.at(i).portName()){
 //            m_portName = list.at(i).portName();
 //        }

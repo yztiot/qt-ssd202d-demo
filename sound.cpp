@@ -1,6 +1,7 @@
 #include "sound.h"
 #include "include/audio.h"
 
+
 Sound::Sound()
 {
     m_strPath = "";
@@ -13,8 +14,8 @@ Sound::Sound()
 void Sound::findSoundFile(){
     /*此路径可自行更改为mp3的所在目录路径*/
     QString path = QDir::currentPath();
-   // QString path = "/root/";
-   // printf("当前目录%s\n",path);
+    // QString path = "/root/";
+    // printf("当前目录%s\n",path);
     qDebug()<<"current path::"<< path;
     m_strSoundNameList.clear();
     QFileInfo info = QFileInfo(path);
@@ -38,7 +39,7 @@ void Sound::findSoundFile(){
 
 /*获取音频文件*/
 QStringList Sound::getSoundFile(){
-   // qDebug()<<"hello sound::"<< m_strSoundNameList;
+    // qDebug()<<"hello sound::"<< m_strSoundNameList;
     return m_strSoundNameList;
 }
 
@@ -52,14 +53,21 @@ void Sound::setPath(){
 
 //sound stop
 void Sound::musicStop(){
-    Mp3PlayStopDec();
+    #if QtForArm
+        Mp3PlayStopDec();
+    #else
+
+    #endif
+
 }
 
 // set sound
 void Sound::setSound(QString num){
-
-        int n =num.toInt();
+    int n =num.toInt();
+    #if QtForArm
         set_volume(n-70);
+    #else
+    #endif
 
 }
 
@@ -67,6 +75,11 @@ void Sound::musicPlay(QString name){
 
     QByteArray byteArray = name.toUtf8();
     const char* mp3FileName = byteArray.constData();
+#if QtForArm
     mp3_codec(const_cast<char*>(mp3FileName));
+#else
+#endif
+
+
 }
 

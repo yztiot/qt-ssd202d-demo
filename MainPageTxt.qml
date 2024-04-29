@@ -1,5 +1,5 @@
 
-import QtQuick 2.15
+import QtQuick 2.12
 
 //主页面用于显示公司信息
 Rectangle {

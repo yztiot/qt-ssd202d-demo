@@ -5,7 +5,7 @@
 #include <QThread>
 #include <QStorageInfo>
 #include <QStandardPaths>
-
+#include "HeadDefine.h"
 class Sound: public QObject
 {
     Q_OBJECT

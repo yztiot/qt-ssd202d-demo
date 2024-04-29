@@ -14,6 +14,11 @@
 #include <QThread>
 #include <serialthread.h>
 #include <QEventLoop>
+#include <sys/ioctl.h>
+#include <termios.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
 
 class SerialFunction : public QObject
 {
